@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>دارالعلوم سیدنا بلالؓ — رسمی صفحہ</title>
+  <style>
+    :root{
+      --page-bg: #f0f8ff;    /* ہلکا آسمانی نیلا */
+      --accent: #0b5770;     /* گہرا نیلا/حکومت */
+      --nav: #2e7d32;        /* اسلا‌می سبز */
+      --nav-hover: #c9a23a;  /* سنہری ہاور */
+      --card: white;
+      --muted: #445;
+      --footer-bg:#0b3f24;   /* گہرا سبز فٹر */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;font-family: "Noto Nastaliq Urdu", "Segoe UI", system-ui, sans-serif;
+      background:var(--page-bg);color:#112;line-height:1.6;
+    }
+
+    /* Header */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:14px 18px;background:linear-gradient(90deg,var(--accent),#005a99);
+      color:#fff;
+    }
+    .logo{width:72px;height:72px;flex:0 0 72px}
+    .logo img{width:100%;height:100%;object-fit:contain;border-radius:8px;background:rgba(255,255,255,0.08);padding:6px}
+    .title-block{text-align:center;flex:1}
+    .title-block h1{margin:0;font-size:22px;letter-spacing:0.5px}
+    .title-block p{margin:4px 0 0 0;opacity:0.95;font-size:13px}
+    .header-right{min-width:210px;text-align:left;font-size:13px}
+    .lang-global{position:fixed;top:12px;left:12px;display:flex;gap:6px;z-index:60}
+    .lang-global button{padding:6px 10px;border-radius:8px;border:0;cursor:pointer;background:#fff;font-weight:700}
+
+    /* Nav */
+    nav{background:transparent;padding:10px;text-align:center;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    nav a{background:var(--nav);color:white;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;transition:0.18s;box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+    nav a:hover{background:var(--nav-hover);color:#fff;transform:translateY(-2px)}
+
+    main{max-width:1100px;margin:18px auto;padding:0 14px}
+
+    /* Slider */
+    .hero{border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,23,0.08);position:relative}
+    .slides{display:flex;transition:transform .7s ease-in-out}
+    .slide{min-width:100%;position:relative}
+    .slide img{width:100%;height:480px;object-fit:cover;display:block}
+    .slide .caption{
+      position:absolute;left:0;right:0;bottom:18px;margin:auto;text-align:center;
+      background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,0.55)100%);color:#fff;padding:12px 18px;border-radius:8px;width:80%;font-size:18px
+    }
+    /* slider controls (small) */
+    .slider-controls{position:absolute;right:12px;top:12px;display:flex;gap:8px;z-index:40}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.45);display:inline-block}
+    .dot.active{background:#fff}
+
+    /* Cards / sections */
+    .card{background:var(--card);padding:18px;border-radius:12px;margin-top:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    h2{color:var(--accent);margin-top:0;border-bottom:2px solid var(--accent);padding-bottom:6px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid .small-card{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:0 4px 12px rgba(2,6,23,0.04);text-align:right}
+    .icon{font-size:26px;margin-left:8px;vertical-align:middle}
+
+    /* Gallery grid */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    /* Results controls */
+    .results-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    select{padding:8px;border-radius:6px;border:1px solid #dfeffd}
+
+    /* Donation / bank */
+    .bank-box{background:var(--bank-bg);padding:18px;border-radius:10px;text-align:center;margin-top:12px}
+    .donate-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    .btn{background:linear-gradient(90deg,#43a047,#66bb6a);color:#fff;padding:10px 18px;border-radius:26px;text-decoration:none;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,0.12)}
+
+    /* Footer */
+    footer{background:var(--footer-bg);color:#fff;text-align:center;padding:18px;margin-top:24px;border-radius:8px}
+    footer a{color:#ffdca3;text-decoration:none;font-weight:700}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:700px){
+      header{flex-direction:column;align-items:center;gap:8px;text-align:center}
+      nav{padding:8px}
+      .grid{grid-template-columns:1fr}
+      .slide img{height:260px}
+      .title-block h1{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- language buttons (global) -->
+  <div class="lang-global" aria-hidden>
+    <button onclick="setLang('ur')">اردو</button>
+    <button onclick="setLang('hi')">हिन्दी</button>
+    <button onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"><img src="logo-right.png" alt="logo right"></div>
+
+    <div class="title-block">
+      <h1 id="siteTitle">دارالعلوم سیدنا بلالؓ</h1>
+      <p id="siteSubtitle">ناکھنول، تحصیل تجارہ، ضلع خیرتھل — سنِ قیام: 2014</p>
+      <p style="margin-top:6px;font-weight:600" id="siteRector">مہتمم: مفتی محمد طیب قاسمی | 📞 9024352763</p>
+    </div>
+
+    <div class="logo"><img src="logo-left.png" alt="logo left"></div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">ہوم</a>
+    <a href="#about">تعارف</a>
+    <a href="#goals">تعلیمی منصوبے</a>
+    <a href="#curriculum">نصابِ تعلیم</a>
+    <a href="#admission">داخلہ</a>
+    <a href="#results">نتائج</a>
+    <a href="#gallery">گیلری</a>
+    <a href="#bank">عطیات</a>
+  </nav>
+
+  <main>
+    <!-- Hero / Slider -->
+    <section id="home" class="hero">
+      <div class="slider-controls" id="sliderDots" aria-hidden></div>
+      <div class="slides" id="slides">
+        <!-- Slides injected by JS -->
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section id="about" class="card">
+      <h2>تعارف</h2>
+      <p>یہ ادارہ 2014 میں قائم کیا گیا تاکہ دینی اور عصری تعلیم کے امتزاج سے نئی نسل کی فکری اور اخلاقی تربیت ہو۔ (یہاں مکمل تعارف بعد میں آسانی سے شامل کریں)</p>
+    </section>
+
+    <!-- Grid quick cards -->
+    <section class="card">
+      <h2>اہم شعبہ جات اور خدمات</h2>
+      <div class="grid">
+        <div class="small-card"><span class="icon">📚</span><strong>نصابِ تعلیم</strong><p style="margin:8px 0 0 0">حفظ، تجوید، فقہ، جدید مضامین وغیرہ۔</p></div>
+        <div class="small-card"><span class="icon">🏠</span><strong>ہاسٹل</strong><p style="margin:8px 0 0 0">آرام دہ رہائش اور نگہداشت۔</p></div>
+        <div class="small-card"><span class="icon">🩺</span><strong>طبی سہولت</strong><p style="margin:8px 0 0 0">بنیادی طبی معاونت دستیاب ہے۔</p></div>
+      </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section id="curriculum" class="card">
+      <h2>نصابِ تعلیم</h2>
+      <p>نصابِ تعلیم میں دینی اور عصری مضامین دونوں شامل کیے گئے ہیں تاکہ طلبہ کو متوازن تربیت ملے۔ (تفصیل بعد میں شامل کریں)</p>
+    </section>
+
+    <!-- Admission -->
+    <section id="admission" class="card">
+      <h2>داخلہ</h2>
+      <p>درخواست فارم، ضروری دستاویزات اور داخلہ کی تاریخیں یہاں درج کریں۔ (Placeholder)</p>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="card">
+      <h2>نتائجِ امتحان (سالانہ و ششماہی)</h2>
+      <div class="results-controls">
+        <div>
+          <label><strong>سالانہ:</strong></label><br>
+          <select id="annualSelect" onchange="showAnnual()">
+            <option value="">-- سال منتخب کریں --</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div>
+          <label><strong>ششماہی:</strong></label><br>
+          <select id="semiSelect" onchange="showSemi()">
+            <option value="">-- ششماہی منتخب کریں --</option>
+            <option value="2025_h1">2025 - H1</option>
+            <option value="2024_h2">2024 - H2</option>
+          </select>
+        </div>
+      </div>
+      <div id="annualResult">نتیجہ ابھی شامل نہیں کیا گیا ہے۔</div>
+      <div id="semiResult" style="margin-top:10px">نتیجہ ابھی شامل نہیں کیا گیا ہے۔</div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="card">
+      <h2>گیلری</h2>
+      <div class="gallery-grid">
+        <img src="g1.jpg" alt="g1">
+        <img src="g2.jpg" alt="g2">
+        <img src="g3.jpg" alt="g3">
+        <img src="g4.jpg" alt="g4">
+      </div>
+      <p style="margin-top:10px"><a href="https://photos.app.goo.gl/omr4BnLfaGuhJe9g9" target="_blank">مزید تصاویر دیکھنے کے لیے یہاں کلک کریں</a></p>
+    </section>
+
+    <!-- Donation / Bank -->
+    <section id="bank" class="card">
+      <h2>مدد و تعاون / Donations</h2>
+      <div class="bank-box">
+        <h3>🏦 بینک اکاؤنٹ کی تفصیل</h3>
+        <p><strong>بینک کا نام:</strong> _____________</p>
+        <p><strong>اکاؤنٹ نمبر:</strong> _____________</p>
+        <p><strong>IFSC کوڈ:</strong> _____________</p>
+        <p><strong>UPI ID:</strong> _____________</p>
+        <div class="donate-btns">
+          <a class="btn" href="upi://pay?pa=YOUR-UPI-ID">💚 ابھی عطیہ کریں</a>
+          <a class="btn" href="#">💚 Donate Now</a>
+          <a class="btn" href="#">💚 अभी दान करें</a>
+        </div>
+        <p style="margin-top:12px;color:#33691e"><em>اللہ تعالیٰ آپ کے عطیات کو قبول فرمائے اور برکت عطا فرمائے۔</em></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>📞 9024352763 | ✉️ dusb212@gmail.com</div>
+    <div style="margin-top:6px">&copy; <span id="year"></span> دارالعلوم سیدنا بلالؓ — تمام حقوق محفوظ ہیں</div>
+  </footer>
+
+  <script>
+    // multilingual content (simple)
+    const content = {
+      ur:{
+        dir:'rtl',
+        title:'دارالعلوم سیدنا بلالؓ',
+        subtitle:'ناکھنول، تحصیل تجارہ، ضلع خیرتھل، راجستھان',
+        rector:'مہتمم: مفتی محمد طیب قاسمی | 📞 9024352763',
+        sliderCaptions:[
+          'مدرسہ کا خوبصورت منظر',
+          'طلبہ درسِ قرآن میں مصروف',
+          'مدرسہ کی مرکزی عمارت',
+          'نمازِ جماعت کا منظر',
+          'اساتذہ و طلبہ کا گروپ فوٹو'
+        ]
+      },
+      hi:{
+        dir:'ltr',
+        title:'दारुल उलूम सैय्यिदुना बिलाल',
+        subtitle:'नाक्हनौल, तहसील तिजारा, जिला खैरथल, राजस्थान',
+        rector:'मोहत्तम: मुफ्ती मोहम्मद तैय्यब कासमी | 📞 9024352763',
+        sliderCaptions:[
+          'मदरसे का सुन्दर दृश्य',
+          'छात्र क़ुरआन की पढ़ाई में व्यस्त',
+          'मुख्य इमारत का दृश्य',
+          'जमा नमाज़ का दृश्य',
+          'शिक्षक व छात्र समूह फोटो'
+        ]
+      },
+      en:{
+        dir:'ltr',
+        title:'Darul Uloom Syedna Bilal',
+        subtitle:'Nakhnaul, Tehsil Tijara, District Kherthal, Rajasthan',
+        rector:'Rector: Mufti Muhammad Tayyab Qasmi | 📞 9024352763',
+        sliderCaptions:[
+          'Beautiful view of the Madrasah',
+          'Students busy with Quran study',
+          'Main building of the madrasah',
+          'Congregational prayer moment',
+          'Teachers and students group photo'
+        ]
+      }
+    };
+
+    // slider images (placeholders)
+    const slides = ['img1.jpg','img2.jpg','img3.jpg','img4.jpg','img5.jpg'];
+    const slidesContainer = document.getElementById('slides');
+    const dotsContainer = document.getElementById('sliderDots');
+    let idx = 0, interval = null;
+
+    function buildSlider(lang='ur'){
+      slidesContainer.innerHTML = '';
+      dotsContainer.innerHTML = '';
+      const caps = content[lang].sliderCaptions || [];
+      slides.forEach((src,i)=>{
+        const slide = document.createElement('div'); slide.className='slide';
+        const img = document.createElement('img'); img.src=src; img.alt=`slide ${i+1}`;
+        const cap = document.createElement('div'); cap.className='caption'; cap.textContent = caps[i] || '';
+        slide.appendChild(img); slide.appendChild(cap); slidesContainer.appendChild(slide);
+        const dot = document.createElement('span'); dot.className='dot'; if(i===0) dot.classList.add('active');
+        dot.onclick = ()=>{ goTo(i); resetAuto(); }; dotsContainer.appendChild(dot);
+      });
+      idx=0;
+      slidesContainer.style.transform = 'translateX(0%)';
+    }
+    function next(){ idx=(idx+1)%slides.length; slidesContainer.style.transform=`translateX(-${idx*100}%)`; updateDots(); }
+    function goTo(i){ idx=i; slidesContainer.style.transform=`translateX(-${idx*100}%)`; updateDots(); }
+    function updateDots(){ const ds = dotsContainer.querySelectorAll('.dot'); ds.forEach(d=>d.classList.remove('active')); if(ds[idx]) ds[idx].classList.add('active'); }
+    function startAuto(){ stopAuto(); interval=setInterval(next,3000); }
+    function stopAuto(){ if(interval) clearInterval(interval); interval=null; }
+    function resetAuto(){ stopAuto(); startAuto(); }
+
+    // set language (global)
+    function setLang(lang){
+      const d = content[lang]||content.ur;
+      document.documentElement.dir = d.dir;
+      document.getElementById('siteTitle').textContent = d.title;
+      document.getElementById('siteSubtitle').textContent = d.subtitle;
+      document.getElementById('siteRector').textContent = d.rector;
+      document.getElementById('year').textContent = new Date().getFullYear();
+      buildSlider(lang);
+    }
+
+    // results placeholder
+    function showAnnual(){ const v=document.getElementById('annualSelect').value; document.getElementById('annualResult').textContent = v? `${v} کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔` : 'نتیجہ ابھی شامل نہیں کیا گیا ہے۔'; }
+    function showSemi(){ const v=document.getElementById('semiSelect').value; document.getElementById('semiResult').textContent = v? `${v} کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔` : 'نتیجہ ابھی شامل نہیں کیا گیا ہے۔'; }
+
+    // init
+    document.addEventListener('DOMContentLoaded', ()=>{
+      setLang('ur');
+      startAuto();
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('slides').addEventListener('mouseenter', stopAuto);
+      document.getElementById('slides').addEventListener('mouseleave', startAuto);
+    });
+  </script>
+
+</body>
+</html>
