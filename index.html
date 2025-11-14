@@ -1,532 +1,214 @@
 <!doctype html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>دارالعلوم سیدنا بلالؓ — ملٹی لینگویج</title>
-  <style>
-    :root{
-      --page-bg:#f0f8ff;
-      --accent:#004080;
-      --nav:#0066cc;
-      --card:#ffffff;
-      --bank-bg:#e6f4ff;
-      --muted:#556;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,'Noto Nastaliq Urdu',sans-serif;background:var(--page-bg);color:#112;transition:background .2s}
-    header{background:var(--accent);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .logo{width:72px;height:72px;flex:0 0 72px}
-    .logo img{width:100%;height:100%;object-fit:contain}
-    .title-block{text-align:center;flex:1}
-    .title-block h1{margin:0;font-size:22px}
-    .title-block h2{margin:2px 0;font-size:14px;opacity:.9}
-    .contact{min-width:200px;text-align:left;font-size:13px;line-height:1.3}
-    .lang-global{position:fixed;top:12px;right:12px;display:flex;gap:6px;z-index:50}
-    .lang-global button{padding:6px 10px;border-radius:8px;border:0;cursor:pointer;background:#fff;font-weight:700}
-    nav{background:var(--nav);padding:8px;text-align:center}
-    nav button{background:#fff;border:0;margin:5px;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700}
-    main{max-width:1100px;margin:18px auto;padding:0 14px}
-    .card{background:var(--card);padding:18px;border-radius:12px;margin-top:18px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
-    h2{color:var(--accent);margin-top:0;border-bottom:2px solid var(--accent);padding-bottom:6px}
-    /* per-section language tabs */
-    .section-tabs{display:flex;gap:6px;justify-content:flex-start;margin-bottom:8px}
-    .section-tabs button{padding:6px 8px;border-radius:6px;border:1px solid #d7e7ff;background:#fff;cursor:pointer}
-    /* slider */
-    .slider{position:relative;border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-    .slides{display:flex;transition:transform .7s ease-in-out}
-    .slide{min-width:100%;position:relative}
-    .slide img{width:100%;height:420px;object-fit:cover;display:block}
-    .caption{position:absolute;left:0;right:0;bottom:10px;padding:10px 14px;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,0.5)100%);color:#fff;text-align:center}
-    /* results */
-    .results-controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-    select{padding:8px;border-radius:6px;border:1px solid #dfeffd}
-    /* gallery grid */
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-    .gallery-grid img{width:100%;height:140px;object-fit:cover;border-radius:8px}
-    /* bank */
-    .bank-box{background:var(--bank-bg);padding:18px;border-radius:10px;text-align:center;margin-top:12px}
-    .donate-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-    .btn{background:linear-gradient(90deg,#43a047,#66bb6a);color:#fff;padding:10px 18px;border-radius:26px;text-decoration:none;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,0.12)}
-    footer{background:var(--accent);color:#fff;text-align:center;padding:16px;margin-top:24px;border-radius:8px}
-    @media (max-width:700px){
-      .slide img{height:260px}
-      header{flex-direction:column;align-items:center;gap:8px}
-      .contact{text-align:center}
-    }
-  </style>
+  <title>Darul Uloom — University Style</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Darul Uloom — University style responsive site. Multilingual: English / हिंदी / اردو" />
 </head>
 <body>
-
-<!-- Global language buttons -->
-<div class="lang-global" aria-hidden>
-  <button onclick="setLang('ur')">🇵🇰 اردو</button>
-  <button onclick="setLang('hi')">🇮🇳 हिन्दी</button>
-  <button onclick="setLang('en')">🇬🇧 English</button>
-</div>
-
-<!-- Header with logos both sides -->
-<header>
-  <div class="logo" id="logo-left">
-    <img src="logo-left.png" alt="logo left">
-  </div>
-
-  <div class="title-block">
-    <h1 id="siteTitle">دارالعلوم سیدنا بلالؓ</h1>
-    <h2 id="siteSubtitle">Nakhnaul — Tijara — Kherthal, Rajasthan</h2>
-    <div class="contact" id="headerContact">📞 9024352763 | ✉️ dusb212@gmail.com</div>
-  </div>
-
-  <div class="logo" id="logo-right">
-    <img src="logo-right.png" alt="logo right">
-  </div>
-</header>
-
-<nav>
-  <button onclick="scrollToId('home')">ہوم</button>
-  <button onclick="scrollToId('about')">تعارف</button>
-  <button onclick="scrollToId('goals')">تعلیمی منصوبے</button>
-  <button onclick="scrollToId('curriculum')">نصابِ تعلیم</button>
-  <button onclick="scrollToId('admissionGuidelines')">داخلہ ہدایات</button>
-  <button onclick="scrollToId('admission')">داخلہ کا طریقہ</button>
-  <button onclick="scrollToId('results')">نتائج</button>
-  <button onclick="scrollToId('gallery')">گیلری</button>
-  <button onclick="scrollToId('bank')">عطیات</button>
-</nav>
-
-<main>
-
-  <!-- HOME -->
-  <section id="home" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="homeTitle">خوش آمدید</h2>
-    <p id="homeLead">دارالعلوم سیدنا بلالؓ میں خوش آمدید — یہ جگہ علم و عمل کا مرکز ہے۔</p>
-
-    <div class="slider" id="slider">
-      <div class="slides" id="slides">
-        <!-- slides injected by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="aboutTitle">تعارف</h2>
-    <p id="aboutText">یہ حصہ مدرسہ کے تعارف کے لیے مخصوص ہے۔ (Placeholder)</p>
-  </section>
-
-  <!-- Goals -->
-  <section id="goals" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="goalsTitle">تعلیمی منصوبے</h2>
-    <p id="goalsText">یہاں مدرسے کے طویل المدتی اور قلیل المدتی تعلیمی منصوبے درج کریں۔ (Placeholder)</p>
-  </section>
-
-  <!-- Curriculum -->
-  <section id="curriculum" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="curriculumTitle">نصابِ تعلیم</h2>
-    <p id="curriculumText">نصابِ تعلیم میں شامل مضامین: حفظِ قرآن، تجوید، عربی، فقہ، اردو، ریاضی، سائنس وغیرہ۔ (Placeholder)</p>
-  </section>
-
-  <!-- Admission Guidelines -->
-  <section id="admissionGuidelines" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="adGuidesTitle">داخلہ کے خواہشمند حضرات کے لیے ضروری ہدایات</h2>
-    <p id="adGuidesText">درکار دستاویزات، عمر کے معیار، فیس کی عمومی تفصیلات یہاں لکھیں۔ (Placeholder)</p>
-  </section>
-
-  <!-- Admission Process -->
-  <section id="admission" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="admissionTitle">داخلہ کا طریقہ کار</h2>
-    <p id="admissionText">فارم، انٹرویو، داخلی ٹیسٹ اور داخلہ کی تاریخیں یہاں بتائیں۔ (Placeholder)</p>
-  </section>
-
-  <!-- Facilities -->
-  <section id="facilities" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="facilitiesTitle">دیگر سہولیات</h2>
-    <p id="facilitiesText">ہاسٹل، لائبریری، طبی سہولت، کھانے کی سہولت وغیرہ کی تفصیل یہاں لکھیں۔ (Placeholder)</p>
-  </section>
-
-  <!-- Departments -->
-  <section id="departments" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="departmentsTitle">شعبہ جات</h2>
-    <p id="departmentsText">حفظ، ناظرہ، عربی ادب، فقہ، کمپیوٹر اور عصری مضامین کے شعبہ جات۔ (Placeholder)</p>
-  </section>
-
-  <!-- Activities -->
-  <section id="activities" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="activitiesTitle">دیگر نشاطات</h2>
-    <p id="activitiesText"> تقریبات، مقابلے، ورکشاپس اور کھیل وغیرہ کی تفصیل۔ (Placeholder)</p>
-  </section>
-
-  <!-- Holidays -->
-  <section id="holidays" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="holidaysTitle">تعطیلات کی تفصیل</h2>
-    <p id="holidaysText">سالانہ تعطیلات، عیدین اور دیگر چھٹیوں کی فہرست یہاں شامل کریں۔ (Placeholder)</p>
-  </section>
-
-  <!-- Results -->
-  <section id="results" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="resultsTitle">نتیجہ امتحان (سالانہ و ششماہی)</h2>
-    <div class="results-controls">
-      <div>
-        <label><strong>سالانہ:</strong></label><br>
-        <select id="annualSelect" onchange="showAnnual()">
-          <option value="">-- سال منتخب کریں --</option>
-          <option value="2025">2025</option>
-          <option value="2024">2024</option>
-          <option value="2023">2023</option>
-        </select>
-      </div>
-      <div>
-        <label><strong>ششماہی:</strong></label><br>
-        <select id="semiSelect" onchange="showSemi()">
-          <option value="">-- ششماہی منتخب کریں --</option>
-          <option value="2025_h1">2025 - H1</option>
-          <option value="2024_h2">2024 - H2</option>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="top-left">Office: +91 12345 67890</div>
+      <div class="top-right">
+        <label for="lang" class="visually-hidden">Language</label>
+        <select id="lang" aria-label="Choose language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ur">اردو</option>
         </select>
       </div>
     </div>
-    <div id="annualResult">اس سال کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔</div>
-    <div id="semiResult" style="margin-top:10px">اس ششماہی کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔</div>
-  </section>
+  </div>
 
-  <!-- Gallery -->
-  <section id="gallery" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="galleryTitle">گیلری</h2>
-    <div class="gallery-grid">
-      <img src="g1.jpg" alt="g1">
-      <img src="g2.jpg" alt="g2">
-      <img src="g3.jpg" alt="g3">
-      <img src="g4.jpg" alt="g4">
-    </div>
-    <p style="margin-top:10px"><a href="https://photos.app.goo.gl/omr4BnLfaGuhJe9g9" target="_blank">مزید تصاویر دیکھنے کے لیے یہاں کلک کریں</a></p>
-  </section>
-
-  <!-- Bank / Donations -->
-  <section id="bank" class="card">
-    <div class="section-tabs" aria-hidden>
-      <button onclick="setLang('ur')">اردو</button>
-      <button onclick="setLang('hi')">हिन्दी</button>
-      <button onclick="setLang('en')">English</button>
-    </div>
-    <h2 id="bankTitle">مدد و تعاون / Donations</h2>
-    <div class="bank-box">
-      <h3 id="bankHead">🏦 بینک اکاؤنٹ کی تفصیل</h3>
-      <p id="bankInfo"><strong>بینک کا نام:</strong> _____________</p>
-      <p><strong>اکاؤنٹ نمبر:</strong> _____________</p>
-      <p><strong>IFSC کوڈ:</strong> _____________</p>
-      <p><strong>UPI ID:</strong> _____________</p>
-      <div class="donate-btns">
-        <a class="btn" href="upi://pay?pa=YOUR-UPI-ID">💚 ابھی عطیہ کریں</a>
-        <a class="btn" href="#">💚 Donate Now</a>
-        <a class="btn" href="#">💚 अभी दान करें</a>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">DU</div>
+        <div class="brand-text">
+          <div class="title" data-i18n="title">Darul Uloom — University Style</div>
+          <div class="subtitle" data-i18n="est">Established 1866</div>
+        </div>
       </div>
-      <p style="margin-top:12px;color:#33691e"><em id="bankPrayer">اللہ تعالیٰ آپ کے عطیات کو قبول فرمائے اور برکت عطا فرمائے۔</em></p>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" data-i18n="nav_home">Home</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#departments" data-i18n="nav_departments">Departments</a>
+        <a href="#admissions" data-i18n="nav_admissions">Admissions</a>
+        <a href="#news" data-i18n="nav_news">News</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <a href="#admissions" class="cta" data-i18n="apply">Apply Now</a>
     </div>
-  </section>
+  </header>
 
-</main>
+  <!-- Hero -->
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-text">
+        <h1 data-i18n="hero_title">Tradition &amp; Excellence in Islamic Education</h1>
+        <p class="lead" data-i18n="hero_sub">
+          A modern university-style campus with timeless values — academic rigor, character development, and community outreach.
+        </p>
+        <div class="hero-actions">
+          <a href="#admissions" class="btn primary" data-i18n="apply">Apply Now</a>
+          <a href="#departments" class="btn outline" data-i18n="learn">Learn More</a>
+        </div>
 
-<footer>
-  <div id="footerContact">📞 9024352763 | ✉️ dusb212@gmail.com</div>
-  <div style="margin-top:6px">&copy; <span id="year"></span> دارالعلوم سیدنا بلالؓ — تمام حقوق محفوظ ہیں</div>
-</footer>
+        <ul class="stats">
+          <li><strong>120+</strong><span data-i18n="stat_faculty">Faculty</span></li>
+          <li><strong>2,500+</strong><span data-i18n="stat_students">Students</span></li>
+          <li><strong>8</strong><span data-i18n="stat_depts">Departments</span></li>
+          <li><strong>159</strong><span data-i18n="stat_years">Years</span></li>
+        </ul>
+      </div>
 
-<script>
-/* Multilingual content (placeholders) */
-const content = {
-  ur:{
-    dir:'rtl',
-    siteTitle:'دارالعلوم سیدنا بلالؓ',
-    siteSubtitle:'ناکھنول، تحصیل تجارہ، ضلع خیرتھل، راجستھان',
-    headerContact:'📞 9024352763 | ✉️ dusb212@gmail.com',
-    homeTitle:'خوش آمدید',
-    homeLead:'دارالعلوم سیدنا بلالؓ میں خوش آمدید — یہ جگہ علم و عمل کا مرکز ہے۔',
-    aboutTitle:'تعارف',
-    aboutText:'یہ حصہ مدرسہ کے تعارف کے لیے مخصوص ہے۔ (Placeholder)',
-    goalsTitle:'تعلیمی منصوبے',
-    goalsText:'یہاں مدرسے کے طویل المدتی اور قلیل المدتی تعلیمی منصوبے درج کریں۔ (Placeholder)',
-    curriculumTitle:'نصابِ تعلیم',
-    curriculumText:'نصابِ تعلیم میں شامل مضامین: حفظِ قرآن، تجوید، عربی، فقہ، اردو، ریاضی، سائنس وغیرہ۔ (Placeholder)',
-    adGuidesTitle:'داخلہ کے خواہشمند حضرات کے لیے ضروری ہدایات',
-    adGuidesText:'درکار دستاویزات، عمر کے معیار، فیس کی عمومی تفصیلات یہاں لکھیں۔ (Placeholder)',
-    admissionTitle:'داخلہ کا طریقہ کار',
-    admissionText:'فارم، انٹرویو، داخلی ٹیسٹ اور داخلہ کی تاریخیں یہاں بتائیں۔ (Placeholder)',
-    facilitiesTitle:'دیگر سہولیات',
-    facilitiesText:'ہاسٹل، لائبریری، طبی سہولت، کھانے کی سہولت وغیرہ کی تفصیل یہاں لکھیں۔ (Placeholder)',
-    departmentsTitle:'شعبہ جات',
-    departmentsText:'حفظ، ناظرہ، عربی ادب، فقہ، کمپیوٹر اور عصری مضامین کے شعبہ جات۔ (Placeholder)',
-    activitiesTitle:'دیگر نشاطات',
-    activitiesText:'تقریبات، مقابلے، ورکشاپس اور کھیل وغیرہ کی تفصیل۔ (Placeholder)',
-    holidaysTitle:'تعطیلات کی تفصیل',
-    holidaysText:'سالانہ تعطیلات، عیدین اور دیگر چھٹیوں کی فہرست یہاں شامل کریں۔ (Placeholder)',
-    resultsTitle:'نتیجہ امتحان (سالانہ و ششماہی)',
-    resultsAnnualPlaceholder:'اس سال کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔',
-    resultsSemiPlaceholder:'اس ششماہی کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔',
-    galleryTitle:'گیلری',
-    bankTitle:'مدد و تعاون / Donations',
-    bankHead:'🏦 بینک اکاؤنٹ کی تفصیل',
-    bankInfo:'بینک کی تفصیل بعد میں شامل کریں۔',
-    bankPrayer:'اللہ تعالیٰ آپ کے عطیات کو قبول فرمائے اور برکت عطا فرمائے۔',
-    sliderCaptions:[
-      'دارالعلوم کا خوبصورت منظر',
-      'طلبہ درسِ قرآن میں مصروف',
-      'مرکزی عمارت کا منظر',
-      'نمازِ جماعت کا مناظر',
-      'اساتذہ و طلبہ کا گروپ فوٹو'
-    ]
-  },
-  hi:{
-    dir:'ltr',
-    siteTitle:'दारुल उलूम सैय्यिदुना बिलाल',
-    siteSubtitle:'नाक्हनौल, तहसील तिजारा, जिला खैरथल, राजस्थान',
-    headerContact:'📞 9024352763 | ✉️ dusb212@gmail.com',
-    homeTitle:'स्वागत है',
-    homeLead:'दारुल उलूम में आपका स्वागत है — यह ज्ञान और आचरण का केंद्र है।',
-    aboutTitle:'परिचय',
-    aboutText:'यह हिस्सा मदरसे के परिचय के लिए है। (Placeholder)',
-    goalsTitle:'शैक्षणिक योजनाएँ',
-    goalsText:'यहाँ दीर्घकालिक और अल्पकालिक शैक्षणिक योजनाएँ लिखें। (Placeholder)',
-    curriculumTitle:'पाठ्यक्रम',
-    curriculumText:'पाठ्यक्रम: हिफ़्ज़, तजवीन, अरबी, फिक्ह, उर्दू, गणित, विज्ञान आदि। (Placeholder)',
-    adGuidesTitle:'प्रवेश-निर्देश',
-    adGuidesText:'आवश्यक दस्तावेज़, आयु मानदंड और सामान्य शुल्क संबंधी जानकारी। (Placeholder)',
-    admissionTitle:'प्रवेश प्रक्रिया',
-    admissionText:'फॉर्म, इंटरव्यू/टेस्ट और प्रवेश तिथियाँ यहाँ दें। (Placeholder)',
-    facilitiesTitle:'सुविधाएँ',
-    facilitiesText:'हॉस्टल, पुस्तकालय, चिकित्सा सुविधा, भोजन आदि। (Placeholder)',
-    departmentsTitle:'विभाग',
-    departmentsText:'हिफ़्ज़, नाज़िरा, अरबी साहित्य, फिक्ह, कंप्यूटर, आधुनिक विषय आदि। (Placeholder)',
-    activitiesTitle:'गतिविधियाँ',
-    activitiesText:'कार्यशालाएँ, खेल, वार्षिक कार्यक्रम आदि। (Placeholder)',
-    holidaysTitle:'छुट्टियाँ',
-    holidaysText:'वार्षिक छुट्टियाँ, ईद और अन्य छुट्टियों की सूची। (Placeholder)',
-    resultsTitle:'परीक्षा परिणाम',
-    resultsAnnualPlaceholder:'इस वर्ष का परिणाम अभी जोड़ा नहीं गया है।',
-    resultsSemiPlaceholder:'इस त्रैमासिक/अर्धवार्षिक का परिणाम अभी जोड़ा نہیں گیا है।',
-    galleryTitle:'गैलरी',
-    bankTitle:'दान एवं सहायता',
-    bankHead:'🏦 बैंक खाता विवरण',
-    bankInfo:'बैंक विवरण बाद में जोड़े जाएँगे।',
-    bankPrayer:'आपका सहयोग दारुल उलूम की तरक्की में मील का पत्थर होगा।',
-    sliderCaptions:[
-      'दारुल उलूम का सुन्दर नजारा',
-      'छात्र क़ुरआन की पढ़ाई में व्यस्त',
-      'मुख्य इमारत का दृश्य',
-      'जमा प्रार्थना का दृश्य',
-      'शिक्षक व छात्र समूह फोटो'
-    ]
-  },
-  en:{
-    dir:'ltr',
-    siteTitle:'Darul Uloom Syedna Bilal',
-    siteSubtitle:'Nakhnaul, Tehsil Tijara, District Kherthal, Rajasthan',
-    headerContact:'📞 9024352763 | ✉️ dusb212@gmail.com',
-    homeTitle:'Welcome',
-    homeLead:'Welcome to Darul Uloom — a center for knowledge & character.',
-    aboutTitle:'About',
-    aboutText:'This section is reserved for the madrasah introduction. (Placeholder)',
-    goalsTitle:'Educational Plans',
-    goalsText:'List long-term and short-term educational plans here. (Placeholder)',
-    curriculumTitle:'Curriculum',
-    curriculumText:'Curriculum includes Hifz, Tajweed, Arabic, Fiqh, Urdu, Maths, Science etc. (Placeholder)',
-    adGuidesTitle:'Admission Guidelines',
-    adGuidesText:'Required documents, age criteria and general fee information. (Placeholder)',
-    admissionTitle:'Admission Process',
-    admissionText:'How to submit form, interview/test stages and admission dates. (Placeholder)',
-    facilitiesTitle:'Facilities',
-    facilitiesText:'Hostel, library, medical facility, food arrangements, sports etc. (Placeholder)',
-    departmentsTitle:'Departments',
-    departmentsText:'Hifz, Nazira, Arabic literature, Fiqh, Computer, Modern subjects etc. (Placeholder)',
-    activitiesTitle:'Activities',
-    activitiesText:'Competitions, events, annual function, workshops and sports. (Placeholder)',
-    holidaysTitle:'Holidays',
-    holidaysText:'Annual holidays, Eid days and other holidays list. (Placeholder)',
-    resultsTitle:'Exam Results',
-    resultsAnnualPlaceholder:'Annual result not yet added.',
-    resultsSemiPlaceholder:'Semi-annual result not yet added.',
-    galleryTitle:'Gallery',
-    bankTitle:'Donations / Support',
-    bankHead:'🏦 Bank Account Details',
-    bankInfo:'Bank details will be added later.',
-    bankPrayer:'Your support will be a milestone in the progress of Darul Uloom.',
-    sliderCaptions:[
-      'Beautiful view of Darul Uloom',
-      'Students busy with Quran study',
-      'Main building view',
-      'Congregational prayer moment',
-      'Teachers and students group photo'
-    ]
-  }
-};
+      <div class="hero-image" role="img" aria-label="Campus view"></div>
+    </section>
 
-/* Slider images (placeholders) */
-const slideImages = ['img1.jpg','img2.jpg','img3.jpg','img4.jpg','img5.jpg'];
+    <!-- About -->
+    <section id="about" class="container section">
+      <h2 data-i18n="about_title">About Us</h2>
+      <p data-i18n="about_text">
+        We are a centre of traditional Islamic learning combined with modern scholarship — providing rigorous programs and community service.
+      </p>
+    </section>
 
-/* build slides */
-const slidesContainer = document.getElementById('slides');
-function buildSlides(lang='ur'){
-  slidesContainer.innerHTML = '';
-  const caps = content[lang].sliderCaptions;
-  slideImages.forEach((src,i)=>{
-    const div = document.createElement('div');
-    div.className = 'slide';
-    const img = document.createElement('img');
-    img.src = src; img.alt = `slide ${i+1}`;
-    const cap = document.createElement('div');
-    cap.className = 'caption';
-    cap.textContent = caps[i] || '';
-    div.appendChild(img); div.appendChild(cap);
-    slidesContainer.appendChild(div);
-  });
-  // reset transform
-  slidesContainer.style.transform = 'translateX(0%)';
-  currentIndex = 0;
-  updateDots && updateDots();
-}
+    <!-- Departments -->
+    <section id="departments" class="container section">
+      <div class="section-head">
+        <h2 data-i18n="departments_title">Departments &amp; Programs</h2>
+        <a href="#" class="link" data-i18n="view_all">View all</a>
+      </div>
 
-/* simple slider auto 3s */
-let currentIndex = 0;
-let autoInt = null;
-function nextSlide(){
-  currentIndex = (currentIndex + 1) % slideImages.length;
-  slidesContainer.style.transform = `translateX(-${currentIndex*100}%)`;
-}
-function startAuto(){ stopAuto(); autoInt = setInterval(nextSlide,3000); }
-function stopAuto(){ if(autoInt) clearInterval(autoInt); autoInt=null; }
-document.addEventListener('DOMContentLoaded', ()=>{
-  buildSlides('ur');
-  startAuto();
-  setLang('ur');
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
-document.getElementById('slider')?.addEventListener('mouseenter', stopAuto);
-document.getElementById('slider')?.addEventListener('mouseleave', startAuto);
+      <div class="grid cards">
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=60')"></div>
+          <h3 data-i18n="dept_quran">Quranic Studies</h3>
+          <p data-i18n="dept_quran_desc">Hifz and Tajweed programs with qualified instructors and modern pedagogy.</p>
+          <a class="link" href="#">Learn more →</a>
+        </article>
 
-/* language switch */
-function setLang(lang){
-  const d = content[lang] || content.ur;
-  document.documentElement.dir = d.dir || 'rtl';
-  // header
-  document.getElementById('siteTitle').textContent = d.siteTitle;
-  document.getElementById('siteSubtitle').textContent = d.siteSubtitle;
-  document.getElementById('headerContact').textContent = d.headerContact;
-  // home
-  document.getElementById('homeTitle').textContent = d.homeTitle;
-  document.getElementById('homeLead').textContent = d.homeLead;
-  // about
-  document.getElementById('aboutTitle').textContent = d.aboutTitle;
-  document.getElementById('aboutText').textContent = d.aboutText;
-  // goals
-  document.getElementById('goalsTitle').textContent = d.goalsTitle;
-  document.getElementById('goalsText').textContent = d.goalsText;
-  // curriculum
-  document.getElementById('curriculumTitle').textContent = d.curriculumTitle;
-  document.getElementById('curriculumText').textContent = d.curriculumText;
-  // admission guides
-  document.getElementById('adGuidesTitle').textContent = d.adGuidesTitle;
-  document.getElementById('adGuidesText').textContent = d.adGuidesText;
-  // admission
-  document.getElementById('admissionTitle').textContent = d.admissionTitle;
-  document.getElementById('admissionText').textContent = d.admissionText;
-  // facilities
-  document.getElementById('facilitiesTitle').textContent = d.facilitiesTitle;
-  document.getElementById('facilitiesText').textContent = d.facilitiesText;
-  // departments
-  document.getElementById('departmentsTitle').textContent = d.departmentsTitle;
-  document.getElementById('departmentsText').textContent = d.departmentsText;
-  // activities
-  document.getElementById('activitiesTitle').textContent = d.activitiesTitle;
-  document.getElementById('activitiesText').textContent = d.activitiesText;
-  // holidays
-  document.getElementById('holidaysTitle').textContent = d.holidaysTitle;
-  document.getElementById('holidaysText').textContent = d.holidaysText;
-  // results
-  document.getElementById('resultsTitle').textContent = d.resultsTitle;
-  // gallery
-  document.getElementById('galleryTitle').textContent = d.galleryTitle;
-  // bank
-  document.getElementById('bankTitle').textContent = d.bankTitle;
-  document.getElementById('bankHead').textContent = d.bankHead;
-  document.getElementById('bankInfo').textContent = d.bankInfo;
-  document.getElementById('bankPrayer').textContent = d.bankPrayer;
-  // footer contact
-  document.getElementById('footerContact').textContent = d.headerContact;
-  // rebuild slides captions
-  buildSlides(lang);
-}
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=60')"></div>
+          <h3 data-i18n="dept_hadith">Hadith &amp; Sunnah</h3>
+          <p data-i18n="dept_hadith_desc">In-depth study of Hadith sciences and methodologies.</p>
+          <a class="link" href="#">Learn more →</a>
+        </article>
 
-/* results functions */
-function showAnnual(){
-  const v = document.getElementById('annualSelect').value;
-  document.getElementById('annualResult').textContent = v ? `${v} کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔` : content.ur.resultsAnnualPlaceholder;
-}
-function showSemi(){
-  const v = document.getElementById('semiSelect').value;
-  document.getElementById('semiResult').textContent = v ? `${v} کا نتیجہ ابھی شامل نہیں کیا گیا ہے۔` : content.ur.resultsSemiPlaceholder;
-}
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=60')"></div>
+          <h3 data-i18n="dept_arabic">Arabic Language</h3>
+          <p data-i18n="dept_arabic_desc">Classical &amp; modern Arabic for comprehension, composition and communication.</p>
+          <a class="link" href="#">Learn more →</a>
+        </article>
 
-/* scroll helper */
-function scrollToId(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=60')"></div>
+          <h3 data-i18n="dept_outreach">Social Outreach</h3>
+          <p data-i18n="dept_outreach_desc">Community programs, seminars and public service initiatives.</p>
+          <a class="link" href="#">Learn more →</a>
+        </article>
+      </div>
+    </section>
 
-</script>
+    <!-- Admissions -->
+    <section id="admissions" class="container section cta-block">
+      <div class="cta-inner">
+        <div>
+          <h2 data-i18n="admissions_title">Admissions Open for 2026</h2>
+          <p data-i18n="admissions_text">Registration for the new academic year is open. Apply online or visit the admissions office for guidance.</p>
+        </div>
+
+        <form class="admission-form" onsubmit="event.preventDefault(); alert('Form submitted (demo)');">
+          <label><span data-i18n="label_name">Name</span><input type="text" placeholder="Your full name" required></label>
+          <label><span data-i18n="label_email">Email</span><input type="email" placeholder="you@example.com" required></label>
+          <label><span data-i18n="label_program">Program</span>
+            <select>
+              <option>Quranic Studies</option>
+              <option>Hadith &amp; Sunnah</option>
+              <option>Arabic Language</option>
+            </select>
+          </label>
+          <button class="btn primary" type="submit" data-i18n="apply">Apply Now</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="container section">
+      <h2 data-i18n="news_title">Latest News &amp; Announcements</h2>
+      <div class="grid news-list">
+        <article class="news">
+          <time datetime="2025-12-10">2025-12-10</time>
+          <h3 data-i18n="news1">Annual Convocation 2025 Announced</h3>
+          <p><a href="#" class="link">Read more →</a></p>
+        </article>
+        <article class="news">
+          <time datetime="2025-10-05">2025-10-05</time>
+          <h3 data-i18n="news2">New Research Center on Islamic Studies</h3>
+          <p><a href="#" class="link">Read more →</a></p>
+        </article>
+        <article class="news">
+          <time datetime="2025-09-01">2025-09-01</time>
+          <h3 data-i18n="news3">Scholarship Applications Open</h3>
+          <p><a href="#" class="link">Read more →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container section contact">
+      <div class="contact-card">
+        <h2 data-i18n="contact_title">Contact Us</h2>
+        <p data-i18n="contact_text">Office: +91 12345 67890<br>Email: info@example.com<br>Address: Darul Uloom Campus, Deoband, India</p>
+        <form onsubmit="event.preventDefault(); alert('Message sent (demo)');">
+          <input placeholder="Name" required>
+          <input placeholder="Email" type="email" required>
+          <textarea placeholder="Message" rows="4" required></textarea>
+          <button class="btn primary" type="submit" data-i18n="send">Send Message</button>
+        </form>
+      </div>
+
+      <div class="map">
+        <iframe title="Campus map" src="https://www.google.com/maps?q=deoband&output=embed" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-mini">DU</div>
+          <p class="muted" data-i18n="footer_about">A centre of traditional learning and modern scholarship.</p>
+        </div>
+        <div>
+          <h4 data-i18n="quick_links">Quick Links</h4>
+          <ul class="muted">
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#departments" data-i18n="nav_departments">Departments</a></li>
+            <li><a href="#admissions" data-i18n="nav_admissions">Admissions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="contact_title">Contact</h4>
+          <p class="muted">Email: info@example.com<br>Phone: +91 12345 67890</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small data-i18n="copyright">© <span id="year"></span> Darul Uloom — All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
