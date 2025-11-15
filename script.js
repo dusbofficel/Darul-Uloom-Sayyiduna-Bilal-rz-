@@ -1,11 +1,11 @@
 // -----------------------------
-// translations and UI updates
+// Translations and UI updates
 // -----------------------------
 const translations = {
   ur: {
     bismillah: "بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِيْمِ",
     intro_title: "تعارف",
-    intro_text: "مدرسے کا اجمالی خاکہ:\n● طلبہ کی تعداد: 950\n● اساتذہ و ملازمین: 75\n● کل فارغین شعبہ تحفیظ القرآن الكريم: 45",
+    intro_text: "مدرسے کا اجمالی خاکہ:<br>● طلبہ کی تعداد: 950<br>● اساتذہ و ملازمین: 75<br>● کل فارغین شعبہ تحفیظ القرآن الكريم: 45",
     slider_labels: ["سلائیڈر 1","سلائیڈر 2","سلائیڈر 3"],
     address: "مقام: ناک نول، تحصیل تجارہ، ضلع خیر، راجستھان — پن کوڈ: ۳۰۱۷۰۷",
     name: "دارالعلوم سیدنا بلال رضی اللہ عنہ"
@@ -13,7 +13,7 @@ const translations = {
   hi: {
     bismillah: "बिस्मिल्लाह हिर रहमान हिर रहीम",
     intro_title: "परिचय",
-    intro_text: "संस्थान का संक्षेप विवरण:\n● छात्र संख्या: 950\n● शिक्षक व कर्मचारी: 75\n● हिफ़्ज़ विभाग के स्नातक: 45",
+    intro_text: "संस्थान का संक्षेप विवरण:<br>● छात्र संख्या: 950<br>● शिक्षक व कर्मचारी: 75<br>● हिफ़्ज़ विभाग के स्नातक: 45",
     slider_labels: ["स्लाइडर 1","स्लाइडर 2","स्लाइडर 3"],
     address: "स्थान: नकनोल, तहसील तिजारा, जिला अलवर, राजस्थान — पिन: 301707",
     name: "दारुल उलूम सैय्यिदुना बिलाल (रज.)"
@@ -21,7 +21,7 @@ const translations = {
   en: {
     bismillah: "In the Name of Allah, the Most Merciful, the Most Compassionate",
     intro_title: "Introduction",
-    intro_text: "Institute summary:\n● Students: 950\n● Teachers & staff: 75\n● Hifz graduates: 45",
+    intro_text: "Institute summary:<br>● Students: 950<br>● Teachers & staff: 75<br>● Hifz graduates: 45",
     slider_labels: ["Slider 1","Slider 2","Slider 3"],
     address: "Location: Nakhnol, Teh. Tijara, Dist. Alwar, Rajasthan — Pincode: 301707",
     name: "Darul Uloom Sayyiduna Bilal (RZ)"
@@ -30,15 +30,20 @@ const translations = {
 
 function applyTranslation(code){
   const t = translations[code] || translations.ur;
-  document.getElementById('bismillah').innerText = t.bismillah;
-  document.getElementById('intro-title').innerText = t.intro_title;
-  document.getElementById('intro-text').innerText = t.intro_text;
-  document.getElementById('school-name').innerText = t.name;
-  document.getElementById('school-address').innerHTML = t.address;
-  // slider button labels
-  document.querySelectorAll('.sbtn').forEach((btn, i) => {
-    btn.innerText = t.slider_labels[i] || (`Slider ${i+1}`);
-  });
+  const b = document.getElementById('bismillah');
+  const introTitle = document.getElementById('intro-title');
+  const introText = document.getElementById('intro-text');
+  const schoolName = document.getElementById('school-name');
+  const schoolAddress = document.getElementById('school-address');
+  const sBtns = document.querySelectorAll('.sbtn');
+
+  if(b) b.innerHTML = t.bismillah;
+  if(introTitle) introTitle.innerHTML = t.intro_title;
+  if(introText) introText.innerHTML = t.intro_text;
+  if(schoolName) schoolName.innerHTML = t.name;
+  if(schoolAddress) schoolAddress.innerHTML = t.address;
+  sBtns.forEach((btn,i)=> btn.innerText = t.slider_labels[i] || (`Slider ${i+1}`));
+
   // direction
   if(code === 'en') document.documentElement.setAttribute('dir','ltr');
   else document.documentElement.setAttribute('dir','rtl');
@@ -47,25 +52,48 @@ function applyTranslation(code){
 // language dropdown
 document.addEventListener('DOMContentLoaded', () => {
   const sel = document.getElementById('lang');
-  // default Urdu
-  sel.value = 'اردو';
-  applyTranslation('ur');
-
-  sel.addEventListener('change', function(){
-    if(this.value === 'اردو') applyTranslation('ur');
-    if(this.value === 'हिंदी') applyTranslation('hi');
-    if(this.value === 'English') applyTranslation('en');
-  });
+  if(sel){
+    sel.value = 'اردو';
+    applyTranslation('ur');
+    sel.addEventListener('change', function(){
+      if(this.value === 'اردو') applyTranslation('ur');
+      if(this.value === 'हिंदी') applyTranslation('hi');
+      if(this.value === 'English') applyTranslation('en');
+    });
+  }
 
   // initialize year in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // setup slider controls
+  const slider = document.getElementById('slider');
+  const sBtns = document.querySelectorAll('.sbtn');
+  let sliderIndex = 0;
+
+  function showSlide(i){
+    if(!slider) return;
+    sliderIndex = i;
+    slider.style.transform = `translateX(-${i * 100}%)`;
+    sBtns.forEach(btn => btn.classList.remove('active'));
+    if(sBtns[i]) sBtns[i].classList.add('active');
+  }
+
+  sBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=> showSlide(Number(btn.dataset.index)));
+  });
+
+  // autoplay
+  setInterval(()=> {
+    sliderIndex = (sliderIndex + 1) % 3;
+    showSlide(sliderIndex);
+  }, 3500);
 });
 
 // -----------------------------
 // Date display: Gregorian + Hijri (approx) + weekday
 // -----------------------------
 function gregorianToJDN(y,m,d){
-  // Julian Day Number for Gregorian date
   if(m <= 2){ y -= 1; m += 12; }
   const A = Math.floor(y/100);
   const B = 2 - A + Math.floor(A/4);
@@ -74,7 +102,6 @@ function gregorianToJDN(y,m,d){
 }
 
 function jdnToIslamic(jd){
-  // conversion algorithm (civil Islamic calendar approximation)
   const l = jd - 1948440 + 10632;
   const n = Math.floor((l - 1) / 10631);
   let l1 = l - 10631 * n + 354;
@@ -97,7 +124,6 @@ function updateDateDisplay(){
   const hij = jdnToIslamic(jd);
   const weekdayIndex = now.getDay();
 
-  // choose language for weekday based on current selection
   const sel = document.getElementById('lang');
   let weekdayStr = daysUr[weekdayIndex];
   if(sel && sel.value === 'हिंदी') weekdayStr = daysHi[weekdayIndex];
@@ -111,33 +137,5 @@ function updateDateDisplay(){
   if(el) el.innerHTML = out;
 }
 
-// update every minute
 updateDateDisplay();
 setInterval(updateDateDisplay, 60*1000);
-
-// -----------------------------
-// Slider functionality
-// -----------------------------
-let sliderIndex = 0;
-const slider = document.getElementById('slider');
-const sBtns = document.querySelectorAll('.sbtn');
-
-function showSlide(i){
-  if(!slider) return;
-  sliderIndex = i;
-  slider.style.transform = `translateX(-${i*100}%)`;
-  sBtns.forEach(b => b.classList.remove('active'));
-  if(sBtns[i]) sBtns[i].classList.add('active');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // attach buttons
-  document.querySelectorAll('.sbtn').forEach(btn=>{
-    btn.addEventListener('click', ()=> showSlide(Number(btn.dataset.index)));
-  });
-  // autoplay
-  setInterval(()=> {
-    sliderIndex = (sliderIndex + 1) % 3;
-    showSlide(sliderIndex);
-  }, 3500);
-});
