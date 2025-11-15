@@ -16,7 +16,7 @@ body{margin:0;background:#f7f7f8;color:#0f172a;line-height:1.6}
 
 /* top band */
 .top-band{
-  background: url('bg-green-pattern.jpg');
+  background: url(bg-green-pattern.jpg);
   background-size: cover;
   background-position:center;
   display:flex;
