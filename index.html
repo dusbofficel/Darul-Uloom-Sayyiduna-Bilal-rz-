@@ -11,11 +11,9 @@
   <!-- TOP COLOR BAND -->
   <div class="top-band">
     <div class="top-left" id="date-area" aria-live="polite">لوڈ ہو رہا ہے...</div>
-
     <div class="top-center">
-      <div class="bismillah" id="bismillah">بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <div id="bismillah" class="bismillah">بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِيْمِ</div>
     </div>
-
     <div class="top-right">
       <label for="lang" class="visually-hidden">زبان</label>
       <select id="lang" class="lang-select" aria-label="Choose language">
@@ -33,20 +31,33 @@
         <img src="logo.jpg" alt="دارالعلوم لوگو" class="logo-img">
       </div>
       <div class="title-wrap">
-        <h1 class="school-name" id="school-name">دارالعلوم سیدنا بلال رضی اللہ عنہ</h1>
-        <p class="school-address" id="school-address">
+        <h1 id="school-name" class="school-name">دارالعلوم سیدنا بلال رضی اللہ عنہ</h1>
+        <p id="school-address" class="school-address">
           مقام: ناک نول، تحصیل تجارہ، ضلع خیر، راجستھان — پن کوڈ: ۳۰۱۷۰۷
         </p>
       </div>
     </div>
   </header>
 
+  <!-- MAIN NAVIGATION (sticky) -->
+  <nav class="main-menu" id="main-menu">
+    <ul>
+      <li><a href="#home">ہوم</a></li>
+      <li><a href="#intro">تعارف</a></li>
+      <li><a href="#education">تعلیمات</a></li>
+      <li><a href="#departments">شعبہ جات</a></li>
+      <li><a href="#syllabus">نصابِ تعلیم</a></li>
+      <li><a href="#results">نتائج</a></li>
+      <li><a href="#admissions">جدید داخلے</a></li>
+    </ul>
+  </nav>
+
   <!-- MAIN UNIVERSITY-STYLE SECTION -->
-  <main class="main-area container">
+  <main class="main-area container" id="home">
 
     <section class="hero-grid">
       <!-- RIGHT: Intro box (in RTL this appears right) -->
-      <aside class="intro-box">
+      <aside class="intro-box" id="intro">
         <h2 id="intro-title">تعارف</h2>
         <p id="intro-text">
           مدرسے کا مختصر خاکہ: <br>
@@ -57,23 +68,23 @@
       </aside>
 
       <!-- LEFT: Image slider (three images) -->
-      <div class="slider-wrap">
+      <div class="slider-wrap" aria-label="Image slider">
         <div class="slider" id="slider">
           <div class="slide"><img src="slide1.jpg" alt="Slider 1"></div>
           <div class="slide"><img src="slide2.jpg" alt="Slider 2"></div>
           <div class="slide"><img src="slide3.jpg" alt="Slider 3"></div>
         </div>
 
-        <div class="slider-controls">
-          <button class="sbtn" data-index="0">سلائیڈر 1</button>
-          <button class="sbtn" data-index="1">سلائیڈر 2</button>
-          <button class="sbtn" data-index="2">سلائیڈر 3</button>
+        <div class="slider-controls" role="tablist" aria-label="Slider controls">
+          <button class="sbtn" data-index="0" aria-controls="slide1">سلائیڈر 1</button>
+          <button class="sbtn" data-index="1" aria-controls="slide2">سلائیڈر 2</button>
+          <button class="sbtn" data-index="2" aria-controls="slide3">سلائیڈر 3</button>
         </div>
       </div>
     </section>
 
-    <!-- OPTIONAL: other boxes (kept simple, can expand later) -->
-    <section class="quick-boxes">
+    <!-- QUICK BOXES -->
+    <section class="quick-boxes" aria-label="Quick links">
       <div class="box">شعبہ جات</div>
       <div class="box">نظام تعلیم</div>
       <div class="box">داخلہ</div>
