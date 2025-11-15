@@ -1,105 +1,53 @@
-:root{
-  --green:#057a55;
-  --green-600:#0b8b61;
-  --muted:#6b7280;
-  --max-width:1100px;
-  --radius:12px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
+/* ─── Reset ───────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Nastaliq Urdu", serif;
 }
 
-/* Basic reset */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;color:#0f172a;background:#f8fafb;line-height:1.5}
-
-/* Utility container */
-.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
-
-/* Topbar */
-.topbar{background:var(--green);color:white;font-size:0.9rem}
-.topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:0.35rem 0}
-
-/* Header */
-.site-header{background:white;box-shadow:0 1px 0 rgba(15,23,42,0.05)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-.brand{display:flex;gap:0.75rem;align-items:center}
-.logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--green),#2db08b);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px}
-.brand-text .title{font-weight:700}
-.brand-text .subtitle{font-size:0.8rem;color:var(--muted)}
-
-/* Navigation */
-.main-nav{display:flex;gap:1rem}
-.main-nav a{text-decoration:none;color:#0f172a;padding:0.35rem 0.4rem;border-radius:6px}
-.main-nav a:hover{color:var(--green)}
-.cta{background:var(--green);color:white;padding:0.55rem 0.8rem;border-radius:8px;text-decoration:none}
-
-/* Hero */
-.hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:2.25rem 0}
-.hero-text h1{font-size:clamp(1.4rem,2.8vw,2.6rem);margin:0 0 0.6rem}
-.lead{color:var(--muted);margin-bottom:1rem}
-.hero-actions{display:flex;gap:0.6rem}
-.btn{display:inline-block;padding:0.6rem 0.9rem;border-radius:8px;text-decoration:none;font-weight:600}
-.btn.primary{background:var(--green);color:white}
-.btn.outline{border:1px solid #e6e9ee;color:#0f172a;background:white}
-
-/* Stats */
-.stats{display:flex;gap:1rem;margin-top:1.2rem;list-style:none;padding:0}
-.stats li{background:white;padding:0.6rem 0.9rem;border-radius:10px;min-width:90px;text-align:center;box-shadow:0 4px 14px rgba(16,24,40,0.03)}
-
-/* hero image placeholder */
-.hero-image{height:300px;background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=60');background-size:cover;border-radius:12px;box-shadow:0 8px 30px rgba(16,24,40,0.08)}
-
-/* Sections */
-.section{padding:2rem 0}
-.section-head{display:flex;justify-content:space-between;align-items:center}
-
-/* Cards grid */
-.grid{display:grid;gap:1rem}
-.cards{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(16,24,40,0.04)}
-.card-img{height:140px;background-size:cover;background-position:center}
-.card h3{margin:0;padding:0.9rem 1rem}
-.card p{padding:0 1rem 1rem;color:var(--muted)}
-.card .link{display:block;padding:0 1rem 1rem;color:var(--green)}
-
-/* Admissions CTA */
-.cta-block{background:linear-gradient(180deg, rgba(6,95,70,0.03), rgba(255,255,255,0));border-radius:12px;padding:1.2rem}
-.cta-inner{display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap}
-.admission-form{min-width:260px;background:white;padding:1rem;border-radius:10px;box-shadow:0 6px 20px rgba(16,24,40,0.04);display:grid;gap:0.6rem}
-.admission-form label{display:block;font-size:0.9rem;color:var(--muted)}
-.admission-form input,.admission-form select{padding:0.55rem;border-radius:8px;border:1px solid #e6e9ee}
-
-/* News */
-.news-list{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.news{background:white;padding:1rem;border-radius:10px;box-shadow:0 6px 20px rgba(16,24,40,0.03)}
-.news time{color:var(--muted);font-size:0.85rem}
-
-/* Contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.contact-card{background:white;padding:1rem;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.03)}
-.contact-card form{display:grid;gap:0.6rem}
-.contact-card input,.contact-card textarea{padding:0.6rem;border-radius:8px;border:1px solid #e6e9ee}
-.map iframe{width:100%;height:100%;min-height:260px;border:0;border-radius:12px}
-
-/* Footer */
-.site-footer{background:#0f172a;color:white;padding:2rem 0;margin-top:2rem}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.brand-mini{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--green),#2db08b);display:flex;align-items:center;justify-content:center;font-weight:700}
-
-/* Small screens */
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:1rem}
-  .contact{grid-template-columns:1fr}
-  .main-nav{display:none}
-  .cta{display:none}
+/* ─── Top Green University Style Strip ────────────────── */
+.top-strip {
+    background: url('bg-green-pattern.jpg');
+    background-size: cover;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 4px solid #0a7c3b;
 }
 
-/* Accessibility & utilities */
-.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+.logo {
+    width: 110px;
+}
 
-/* RTL support */
-[dir="rtl"]{direction:rtl}
-[dir="rtl"] .header-inner{direction:rtl}
-[dir="rtl"] .brand{flex-direction:row-reverse}
-[dir="rtl"] .hero{grid-template-columns:420px 1fr}
-[dir="rtl"] .main-nav a{text-align:right}
+/* Title */
+.top-strip h1 {
+    color: #ffffff;
+    text-shadow: 0 0 6px #004d1f;
+    font-size: 42px;
+}
+
+/* ─── Main White Area with Pattern ─────────────────────── */
+.main-box {
+    background: url('bg-white-pattern.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* ─── Content Boxes ───────────────────────────────────── */
+.section {
+    background: #ffffffcc;
+    border-right: 5px solid #0a7c3b;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+}
+
+.section h2 {
+    color: #0a7c3b;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
