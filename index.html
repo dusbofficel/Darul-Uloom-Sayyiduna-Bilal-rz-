@@ -1,214 +1,45 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Darul Uloom — University Style</title>
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="Darul Uloom — University style responsive site. Multilingual: English / हिंदी / اردو" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دارالعلوم سیدنا بلالؓ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="top-left">Office: +91 12345 67890</div>
-      <div class="top-right">
-        <label for="lang" class="visually-hidden">Language</label>
-        <select id="lang" aria-label="Choose language">
-          <option value="en">English</option>
-          <option value="hi">हिन्दी</option>
-          <option value="ur">اردو</option>
-        </select>
-      </div>
-    </div>
-  </div>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo">DU</div>
-        <div class="brand-text">
-          <div class="title" data-i18n="title">Darul Uloom — University Style</div>
-          <div class="subtitle" data-i18n="est">Established 1866</div>
-        </div>
-      </div>
+    <!-- ─── Top Green Strip ───────────────────────────────────────── -->
+    <header class="top-strip">
+        <img src="logo.jpg" class="logo" alt="Logo">
+        <h1>دارالعلوم سیدنا بلالؓ</h1>
+    </header>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#home" data-i18n="nav_home">Home</a>
-        <a href="#about" data-i18n="nav_about">About</a>
-        <a href="#departments" data-i18n="nav_departments">Departments</a>
-        <a href="#admissions" data-i18n="nav_admissions">Admissions</a>
-        <a href="#news" data-i18n="nav_news">News</a>
-        <a href="#contact" data-i18n="nav_contact">Contact</a>
-      </nav>
+    <!-- ─── White Background Main Area ───────────────────────────── -->
+    <section class="main-box">
 
-      <a href="#admissions" class="cta" data-i18n="apply">Apply Now</a>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main id="home">
-    <section class="hero container">
-      <div class="hero-text">
-        <h1 data-i18n="hero_title">Tradition &amp; Excellence in Islamic Education</h1>
-        <p class="lead" data-i18n="hero_sub">
-          A modern university-style campus with timeless values — academic rigor, character development, and community outreach.
-        </p>
-        <div class="hero-actions">
-          <a href="#admissions" class="btn primary" data-i18n="apply">Apply Now</a>
-          <a href="#departments" class="btn outline" data-i18n="learn">Learn More</a>
+        <div class="section">
+            <h2>تعارف</h2>
+            <p>
+                یہ حصہ مدرسہ کے مختصر تعارف کے لیے ہے، آپ یہاں مکمل تعارف لکھ سکتے ہیں۔
+            </p>
         </div>
 
-        <ul class="stats">
-          <li><strong>120+</strong><span data-i18n="stat_faculty">Faculty</span></li>
-          <li><strong>2,500+</strong><span data-i18n="stat_students">Students</span></li>
-          <li><strong>8</strong><span data-i18n="stat_depts">Departments</span></li>
-          <li><strong>159</strong><span data-i18n="stat_years">Years</span></li>
-        </ul>
-      </div>
-
-      <div class="hero-image" role="img" aria-label="Campus view"></div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="container section">
-      <h2 data-i18n="about_title">About Us</h2>
-      <p data-i18n="about_text">
-        We are a centre of traditional Islamic learning combined with modern scholarship — providing rigorous programs and community service.
-      </p>
-    </section>
-
-    <!-- Departments -->
-    <section id="departments" class="container section">
-      <div class="section-head">
-        <h2 data-i18n="departments_title">Departments &amp; Programs</h2>
-        <a href="#" class="link" data-i18n="view_all">View all</a>
-      </div>
-
-      <div class="grid cards">
-        <article class="card">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=60')"></div>
-          <h3 data-i18n="dept_quran">Quranic Studies</h3>
-          <p data-i18n="dept_quran_desc">Hifz and Tajweed programs with qualified instructors and modern pedagogy.</p>
-          <a class="link" href="#">Learn more →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=60')"></div>
-          <h3 data-i18n="dept_hadith">Hadith &amp; Sunnah</h3>
-          <p data-i18n="dept_hadith_desc">In-depth study of Hadith sciences and methodologies.</p>
-          <a class="link" href="#">Learn more →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=60')"></div>
-          <h3 data-i18n="dept_arabic">Arabic Language</h3>
-          <p data-i18n="dept_arabic_desc">Classical &amp; modern Arabic for comprehension, composition and communication.</p>
-          <a class="link" href="#">Learn more →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=60')"></div>
-          <h3 data-i18n="dept_outreach">Social Outreach</h3>
-          <p data-i18n="dept_outreach_desc">Community programs, seminars and public service initiatives.</p>
-          <a class="link" href="#">Learn more →</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Admissions -->
-    <section id="admissions" class="container section cta-block">
-      <div class="cta-inner">
-        <div>
-          <h2 data-i18n="admissions_title">Admissions Open for 2026</h2>
-          <p data-i18n="admissions_text">Registration for the new academic year is open. Apply online or visit the admissions office for guidance.</p>
+        <div class="section">
+            <h2>مقاصد تعلیم</h2>
+            <p>
+                یہاں مقاصدِ تعلیم یا دیگر اہم نکات شامل کیے جائیں گے۔
+            </p>
         </div>
 
-        <form class="admission-form" onsubmit="event.preventDefault(); alert('Form submitted (demo)');">
-          <label><span data-i18n="label_name">Name</span><input type="text" placeholder="Your full name" required></label>
-          <label><span data-i18n="label_email">Email</span><input type="email" placeholder="you@example.com" required></label>
-          <label><span data-i18n="label_program">Program</span>
-            <select>
-              <option>Quranic Studies</option>
-              <option>Hadith &amp; Sunnah</option>
-              <option>Arabic Language</option>
-            </select>
-          </label>
-          <button class="btn primary" type="submit" data-i18n="apply">Apply Now</button>
-        </form>
-      </div>
+        <div class="section">
+            <h2>شعبہ جات</h2>
+            <p>
+                یہاں مدرسہ کے تمام شعبہ جات کی فہرست شامل کریں۔
+            </p>
+        </div>
+
     </section>
 
-    <!-- News -->
-    <section id="news" class="container section">
-      <h2 data-i18n="news_title">Latest News &amp; Announcements</h2>
-      <div class="grid news-list">
-        <article class="news">
-          <time datetime="2025-12-10">2025-12-10</time>
-          <h3 data-i18n="news1">Annual Convocation 2025 Announced</h3>
-          <p><a href="#" class="link">Read more →</a></p>
-        </article>
-        <article class="news">
-          <time datetime="2025-10-05">2025-10-05</time>
-          <h3 data-i18n="news2">New Research Center on Islamic Studies</h3>
-          <p><a href="#" class="link">Read more →</a></p>
-        </article>
-        <article class="news">
-          <time datetime="2025-09-01">2025-09-01</time>
-          <h3 data-i18n="news3">Scholarship Applications Open</h3>
-          <p><a href="#" class="link">Read more →</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="container section contact">
-      <div class="contact-card">
-        <h2 data-i18n="contact_title">Contact Us</h2>
-        <p data-i18n="contact_text">Office: +91 12345 67890<br>Email: info@example.com<br>Address: Darul Uloom Campus, Deoband, India</p>
-        <form onsubmit="event.preventDefault(); alert('Message sent (demo)');">
-          <input placeholder="Name" required>
-          <input placeholder="Email" type="email" required>
-          <textarea placeholder="Message" rows="4" required></textarea>
-          <button class="btn primary" type="submit" data-i18n="send">Send Message</button>
-        </form>
-      </div>
-
-      <div class="map">
-        <iframe title="Campus map" src="https://www.google.com/maps?q=deoband&output=embed" loading="lazy"></iframe>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand-mini">DU</div>
-          <p class="muted" data-i18n="footer_about">A centre of traditional learning and modern scholarship.</p>
-        </div>
-        <div>
-          <h4 data-i18n="quick_links">Quick Links</h4>
-          <ul class="muted">
-            <li><a href="#about" data-i18n="nav_about">About</a></li>
-            <li><a href="#departments" data-i18n="nav_departments">Departments</a></li>
-            <li><a href="#admissions" data-i18n="nav_admissions">Admissions</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 data-i18n="contact_title">Contact</h4>
-          <p class="muted">Email: info@example.com<br>Phone: +91 12345 67890</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <small data-i18n="copyright">© <span id="year"></span> Darul Uloom — All rights reserved.</small>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
