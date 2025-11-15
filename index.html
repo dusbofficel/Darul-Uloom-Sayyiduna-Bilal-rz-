@@ -1,45 +1,94 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دارالعلوم سیدنا بلالؓ</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دارالعلوم سیدنا بلالؓ</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- ─── Top Green Strip ───────────────────────────────────────── -->
-    <header class="top-strip">
-        <img src="logo.jpg" class="logo" alt="Logo">
-        <h1>دارالعلوم سیدنا بلالؓ</h1>
-    </header>
+  <!-- TOP COLOR BAND -->
+  <div class="top-band">
+    <div class="top-left" id="date-area" aria-live="polite">لوڈ ہو رہا ہے...</div>
 
-    <!-- ─── White Background Main Area ───────────────────────────── -->
-    <section class="main-box">
+    <div class="top-center">
+      <div class="bismillah" id="bismillah">بِسْمِ اللّٰہِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    </div>
 
-        <div class="section">
-            <h2>تعارف</h2>
-            <p>
-                یہ حصہ مدرسہ کے مختصر تعارف کے لیے ہے، آپ یہاں مکمل تعارف لکھ سکتے ہیں۔
-            </p>
+    <div class="top-right">
+      <label for="lang" class="visually-hidden">زبان</label>
+      <select id="lang" class="lang-select" aria-label="Choose language">
+        <option>اردو</option>
+        <option>हिंदी</option>
+        <option>English</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- WHITE STRIPE WITH LOGO & SCHOOL NAME -->
+  <header class="white-stripe">
+    <div class="container header-inner">
+      <div class="logo-wrap">
+        <img src="logo.jpg" alt="دارالعلوم لوگو" class="logo-img">
+      </div>
+      <div class="title-wrap">
+        <h1 class="school-name" id="school-name">دارالعلوم سیدنا بلال رضی اللہ عنہ</h1>
+        <p class="school-address" id="school-address">
+          مقام: ناک نول، تحصیل تجارہ، ضلع خیر، راجستھان — پن کوڈ: ۳۰۱۷۰۷
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN UNIVERSITY-STYLE SECTION -->
+  <main class="main-area container">
+
+    <section class="hero-grid">
+      <!-- RIGHT: Intro box (in RTL this appears right) -->
+      <aside class="intro-box">
+        <h2 id="intro-title">تعارف</h2>
+        <p id="intro-text">
+          مدرسے کا مختصر خاکہ: <br>
+          ● طلبہ کی تعداد: <strong id="stat-students">950</strong><br>
+          ● اساتذہ و ملازمین: <strong id="stat-staff">75</strong><br>
+          ● کل فارغین (تحفیظ): <strong id="stat-hifz">45</strong>
+        </p>
+      </aside>
+
+      <!-- LEFT: Image slider (three images) -->
+      <div class="slider-wrap">
+        <div class="slider" id="slider">
+          <div class="slide"><img src="slide1.jpg" alt="Slider 1"></div>
+          <div class="slide"><img src="slide2.jpg" alt="Slider 2"></div>
+          <div class="slide"><img src="slide3.jpg" alt="Slider 3"></div>
         </div>
 
-        <div class="section">
-            <h2>مقاصد تعلیم</h2>
-            <p>
-                یہاں مقاصدِ تعلیم یا دیگر اہم نکات شامل کیے جائیں گے۔
-            </p>
+        <div class="slider-controls">
+          <button class="sbtn" data-index="0">سلائیڈر 1</button>
+          <button class="sbtn" data-index="1">سلائیڈر 2</button>
+          <button class="sbtn" data-index="2">سلائیڈر 3</button>
         </div>
-
-        <div class="section">
-            <h2>شعبہ جات</h2>
-            <p>
-                یہاں مدرسہ کے تمام شعبہ جات کی فہرست شامل کریں۔
-            </p>
-        </div>
-
+      </div>
     </section>
 
-    <script src="script.js"></script>
+    <!-- OPTIONAL: other boxes (kept simple, can expand later) -->
+    <section class="quick-boxes">
+      <div class="box">شعبہ جات</div>
+      <div class="box">نظام تعلیم</div>
+      <div class="box">داخلہ</div>
+      <div class="box">رابطہ</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> دارالعلوم سیدنا بلالؓ — جملہ حقوق محفوظ</div>
+      <div>ای میل: info@example.com | فون: +91 12345 67890</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
